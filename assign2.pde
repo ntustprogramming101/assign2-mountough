@@ -21,8 +21,10 @@ int lifescore = 2;
 int heartFirst = 10;
 int heartPlus = 70;
 
+int groundhogMove;
 int groundhogX = 320;
 int groundhogY = 80;
+int groundhogNewX, groundhogNewY;
 boolean upPressed = false;
 boolean downPressed = false;
 boolean leftPressed = false;
@@ -54,10 +56,10 @@ void draw() {
         image(startNormal, 248,360);
         if (mouseX > 248 && mouseX < 392
             && mouseY > 360 && mouseY < 420){
-            image(startHovered, 248,360);
-            if (mousePressed){
-              state = GAME_RUN;
-            }
+          image(startHovered, 248,360);
+          if (mousePressed){
+            state = GAME_RUN;
+          }
         }
       break;
       
@@ -79,7 +81,7 @@ void draw() {
     //soilder
         soilderX += soilderXSpeed;
         image(soldier ,soilderX,(soilderDeep*80));
-        if (soilderX == 640){
+        if (soilderX > 640){
           soilderX = -50;
           soilderDeep = floor(random(3)) + 2 ;
         }
@@ -91,10 +93,10 @@ void draw() {
             cabbagegrow = false;
           }
         }else{
-          lifescore += 1;
-          cabbageX =(floor(random(7)))*80;
-          cabbageY =(floor(random(3))+2)*80;
-          cabbagegrow = true;
+            lifescore += 1;
+            cabbageX =(floor(random(7)))*80;
+            cabbageY =(floor(random(3))+2)*80;
+            cabbagegrow = true;
          }
     //hit
         if (soilderX < groundhogX+80 && soilderX+80 > groundhogX &&
@@ -107,9 +109,9 @@ void draw() {
          if (lifescore == 0){
             state = GAME_LOSE;
         }if (lifescore > 0){
-            image(life, heartFirst,10);
+           image(life, heartFirst,10);
         }if (lifescore > 1){
-            image(life, heartFirst+(heartPlus)*1,10);
+           image(life, heartFirst+(heartPlus)*1,10);
         }if (lifescore > 2){
            image(life, heartFirst+(heartPlus)*2,10);
         }if (lifescore > 3){
@@ -117,9 +119,9 @@ void draw() {
         }if (lifescore > 4){
            image(life, heartFirst+(heartPlus)*4,10);
         }if (lifescore > 5){
-           lifescore = 5;
+           lifescore = 2;
+           soilderXSpeed += 2;
         }
-        
       break;
 
     case GAME_LOSE:
@@ -127,21 +129,18 @@ void draw() {
         image(restartNormal, 248,360);
         if (mouseX > 248 && mouseX < 392 &&
             mouseY > 360 && mouseY < 420){
-            image(restartHovered, 248,360);
-            if (mousePressed){
-              state = GAME_RUN;
-              lifescore = 2;
-              groundhogX = 320;
-              groundhogY = 80;
-              soilderX = -50;
-              soilderXSpeed = 5;
-              
-            }
+          image(restartHovered, 248,360);
+          if (mousePressed){
+            state = GAME_RUN;
+            lifescore = 2;
+            groundhogX = 320;
+            groundhogY = 80;
+            soilderX = -50;
+            soilderXSpeed = 5;
+          }
         }
       break;
   }
-  
-
 }
 
 void keyPressed() {
@@ -151,7 +150,7 @@ void keyPressed() {
         upPressed = true;
         if (upPressed){
           if (groundhogY > 80){
-          groundhogY -= 80;
+            groundhogY -= 80;
           }
           upPressed = false;
         }
@@ -162,7 +161,7 @@ void keyPressed() {
           if (groundhogY < 400){
           groundhogY += 80;
           }
-          downPressed = false;
+          leftPressed = false;
         }
         break;
       case LEFT:
