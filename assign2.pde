@@ -83,7 +83,7 @@ void draw() {
         image(soldier ,soilderX,(soilderDeep*80));
         if (soilderX > 640){
           soilderX = -50;
-          soilderDeep = floor(random(3)) + 2 ;
+          /*soilderDeep = floor(random(3)) + 2 ;*/
         }
     //cabbage
         if (cabbagegrow){
@@ -116,11 +116,12 @@ void draw() {
            image(life, heartFirst+(heartPlus)*2,10);
         }if (lifescore > 3){
            image(life, heartFirst+(heartPlus)*3,10);
-        }if (lifescore > 4){
+	   lifescore = 3;
+        }/*if (lifescore > 4){
            image(life, heartFirst+(heartPlus)*4,10);
         }if (lifescore > 5){
            lifescore = 2;
-           soilderXSpeed += 2;
+           soilderXSpeed += 2;*/
         }
       break;
 
@@ -146,7 +147,7 @@ void draw() {
 void keyPressed() {
   if (key == CODED) {
     switch (keyCode) {
-      case UP:
+     /* case UP:
         upPressed = true;
         if (upPressed){
           if (groundhogY > 80){
@@ -154,7 +155,7 @@ void keyPressed() {
           }
           upPressed = false;
         }
-        break;
+        break;*/
       case DOWN:
         downPressed = true;
         if (downPressed){
