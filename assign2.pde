@@ -31,7 +31,7 @@ boolean leftPressed = false;
 boolean rightPressed = false;
 
 void setup() {
-	size(640, 480, P2D);
+  size(640, 480, P2D);
   bg = loadImage("img/bg.jpg");
   soil = loadImage("img/soil.png");
   life = loadImage("img/life.png");
@@ -116,13 +116,13 @@ void draw() {
            image(life, heartFirst+(heartPlus)*2,10);
         }if (lifescore > 3){
            image(life, heartFirst+(heartPlus)*3,10);
-	   lifescore = 3;
+     lifescore = 3;
         }/*if (lifescore > 4){
            image(life, heartFirst+(heartPlus)*4,10);
         }if (lifescore > 5){
            lifescore = 2;
-           soilderXSpeed += 2;*/
-        }
+           soilderXSpeed += 2;
+        }*/
       break;
 
     case GAME_LOSE:
